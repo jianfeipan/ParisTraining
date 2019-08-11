@@ -1,0 +1,6 @@
+ParisTraining is a project for making it easier for members to registrate ParisTraining classes.
+
+Member can see classes on wechat app then choose one to registrate.
+Wechat app can show how many places left and the price.
+Member can pay by wechatPay and registrate to aviliable classes.
+
