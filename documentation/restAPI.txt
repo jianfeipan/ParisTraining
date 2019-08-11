@@ -1,0 +1,4 @@
+This is a documentation of restAPI between user and client.
+
+GET/users/user/all
+
