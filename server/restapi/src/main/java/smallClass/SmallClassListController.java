@@ -27,8 +27,12 @@ public class SmallClassListController {
             method = RequestMethod.POST
     )
     public ResponseEntity< String > addUser(@RequestBody String userName) {
-        users.add(userName);
-        return new ResponseEntity<>("success" ,HttpStatus.CREATED);
+        if(users.contains(userName)) {
+            return new ResponseEntity<>("userExists", HttpStatus.CONFLICT);
+        }else {
+            users.add(userName);
+            return new ResponseEntity<>("success", HttpStatus.CREATED);
+        }
     }
     
 }

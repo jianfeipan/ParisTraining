@@ -54,6 +54,35 @@ public class SmallClassControllerIT {
                 request,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.CREATED));
+        assertThat(response.getBody(), equalTo("success"));
+
+        response = template.getForEntity(getUsersUrl.toString(),
+                String.class);
+        assertThat(response.getBody(), equalTo("[\"Jianfei\"]"));
+    }
+
+    @Test
+    public void postDuplicatedUserThenGet() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(getUsersUrl.toString(),
+                String.class);
+        assertThat(response.getBody(), equalTo("[]"));
+
+        HttpEntity<String> request = new HttpEntity<>("Jianfei");
+        response = template.postForEntity(postUserUrl.toString(),
+                request,
+                String.class);
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.CREATED));
+        assertThat(response.getBody(), equalTo("success"));
+
+        response = template.getForEntity(getUsersUrl.toString(),
+                String.class);
+        assertThat(response.getBody(), equalTo("[\"Jianfei\"]"));
+
+        response = template.postForEntity(postUserUrl.toString(),
+                request,
+                String.class);
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.CONFLICT));
+        assertThat(response.getBody(), equalTo("userExists"));
 
         response = template.getForEntity(getUsersUrl.toString(),
                 String.class);
