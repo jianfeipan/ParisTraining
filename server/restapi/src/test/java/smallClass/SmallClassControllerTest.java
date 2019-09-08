@@ -1,4 +1,4 @@
-package hello;
+package smallClass;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,15 +17,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HelloControllerTest {
+public class SmallClassControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+    public void getEmptyList() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/smallClass/getUsers").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+                .andExpect(content().string(equalTo("[]")));
+    }
+
+    @Test
+    public void postUser() throws Exception {
+        String newUser = "Jianfei";
+        mvc.perform(
+                MockMvcRequestBuilders.post("/smallClass/addUser")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{"+newUser+"}")
+                ).andExpect(status().isCreated());
     }
 }
