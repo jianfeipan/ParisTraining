@@ -1,27 +1,27 @@
 import enums.AddUserStatus;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Seance {
-    private Date date;
+    private LocalDate date;
     private int size;
     private List<String> users;
-    private TrainingClassDefinition aClass;
+    private TrainingClassDefinition trainingClassDefinition;
 
-    public Seance(TrainingClassDefinition aClass, Date date, int size) {
-        this.aClass = aClass;
+    public Seance(TrainingClassDefinition aClass, LocalDate date, int size) {
+        this.trainingClassDefinition = aClass;
         this.date = date;
         this.size = size;
         this.users = new ArrayList<String>(size);
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -39,5 +39,13 @@ public class Seance {
             users.add(newUser);
             return AddUserStatus.success;
         }
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public TrainingClassDefinition getTrainingClassDefinition() {
+        return trainingClassDefinition;
     }
 }

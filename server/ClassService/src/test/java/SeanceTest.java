@@ -3,7 +3,9 @@ import enums.AddUserStatus;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -15,7 +17,8 @@ public class SeanceTest {
 
     @Before
     public void setUp() {
-        seance = new Seance(new TrainingClassDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛"), new Date(), size);
+        LocalDate today = LocalDate.now();
+        seance = new Seance(new TrainingClassDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛"), today, size);
     }
 
     @Test

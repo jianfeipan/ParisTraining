@@ -2,5 +2,5 @@ package enums;
 
 public enum AddClassDefinitionStatus {
     success,
-    failed_duplicated_name
+    failed_invalid_name
 }
