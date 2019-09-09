@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 public class SmallClassListController {
 
-    private ITrainingClassService classService;
+    //private ITrainingClassService classService;
     private List<String> users = new ArrayList<String>();
 
     @RequestMapping(value = "/smallClass/getUsers")
