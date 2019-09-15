@@ -1,3 +1,5 @@
+package test;
+
 public class TrainingClassDefinition {
     private String name;
     private String description;
