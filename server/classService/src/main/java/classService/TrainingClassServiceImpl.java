@@ -1,5 +1,7 @@
 package classService;
 
+import activity.Seance;
+import activity.TrainingClassDefinition;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 

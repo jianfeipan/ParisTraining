@@ -1,9 +1,10 @@
+package activity;
 
 import enums.AddUserStatus;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import classService.Seance;
-import classService.TrainingClassDefinition;
+
 
 import java.time.LocalDate;
 
@@ -26,25 +27,25 @@ public class SeanceTest {
         AddUserStatus status = seance.addUser("Jianfei");
         int nb = seance.getUsers().size();
         assertEquals(status, AddUserStatus.success);
-        assertEquals(nb,1);
+        Assert.assertEquals(nb,1);
 
         status = seance.addUser("Jianfei");
         nb = seance.getUsers().size();
         assertEquals(status, AddUserStatus.failed_duplicated);
-        assertEquals(nb,1);
+        Assert.assertEquals(nb,1);
 
         status = seance.addUser("Yaya");
         nb = seance.getUsers().size();
         assertEquals(status, AddUserStatus.success);
-        assertEquals(nb,2);
+        Assert.assertEquals(nb,2);
 
         status = seance.addUser("Xiaoxiao");
         nb = seance.getUsers().size();
         assertEquals(status, AddUserStatus.success);
-        assertEquals(nb,3);
+        Assert.assertEquals(nb,3);
 
         status = seance.addUser("Yiqiao");
         assertEquals(status, AddUserStatus.failed_full);
-        assertEquals(nb,3);
+        Assert.assertEquals(nb,3);
     }
 }

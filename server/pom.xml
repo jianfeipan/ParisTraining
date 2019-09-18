@@ -17,6 +17,8 @@
     <modules>
         <module>restapi</module>
         <module>classService</module>
+        <module>activityModel</module>
+        <module>activityPersistenceService</module>
     </modules>
 
 </project>

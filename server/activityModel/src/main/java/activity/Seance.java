@@ -1,4 +1,4 @@
-package classService;
+package activity;
 
 import enums.AddUserStatus;
 

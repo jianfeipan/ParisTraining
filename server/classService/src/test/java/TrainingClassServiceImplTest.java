@@ -1,10 +1,10 @@
+import activity.Seance;
+import activity.TrainingClassDefinition;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 import org.junit.Before;
 import org.junit.Test;
 import classService.ITrainingClassService;
-import classService.Seance;
-import classService.TrainingClassDefinition;
 import classService.TrainingClassServiceImpl;
 
 import java.time.DayOfWeek;
