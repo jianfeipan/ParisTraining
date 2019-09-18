@@ -19,7 +19,7 @@ public class SeanceTest {
     @Before
     public void setUp() {
         LocalDate today = LocalDate.now();
-        seance = new Seance(new TrainingClassDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛"), today, size);
+        seance = new Seance(new ActivityDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛"), today, size);
     }
 
     @Test

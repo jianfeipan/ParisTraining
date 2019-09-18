@@ -1,7 +1,7 @@
 package classService;
 
 import activity.Seance;
-import activity.TrainingClassDefinition;
+import activity.ActivityDefinition;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 import jdk.Exported;
@@ -12,10 +12,10 @@ import java.util.Optional;
 
 @Exported
 public interface ITrainingClassService {
-    public AddClassDefinitionStatus addClassDefinition(TrainingClassDefinition newClassDef);
+    public AddClassDefinitionStatus addClassDefinition(ActivityDefinition newClassDef);
     public AddSeanceStatus addSeance(String className, LocalDate date, int size);
 
-    public Optional<TrainingClassDefinition> findClassDeinition(String name);
+    public Optional<ActivityDefinition> findClassDeinition(String name);
     public Optional<Seance> findNextSeance(String classDef);
     public Map<String, Seance> findSeances();
 }

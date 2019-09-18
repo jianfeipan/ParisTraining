@@ -10,10 +10,10 @@ public class Seance {
     private LocalDate date;
     private int size;
     private List<String> users;
-    private TrainingClassDefinition trainingClassDefinition;
+    private ActivityDefinition activityDefinition;
 
-    public Seance(TrainingClassDefinition aClass, LocalDate date, int size) {
-        this.trainingClassDefinition = aClass;
+    public Seance(ActivityDefinition aClass, LocalDate date, int size) {
+        this.activityDefinition = aClass;
         this.date = date;
         this.size = size;
         this.users = new ArrayList<String>(size);
@@ -47,7 +47,7 @@ public class Seance {
         return size;
     }
 
-    public TrainingClassDefinition getTrainingClassDefinition() {
-        return trainingClassDefinition;
+    public ActivityDefinition getActivityDefinition() {
+        return activityDefinition;
     }
 }

@@ -1,10 +1,10 @@
 package activity;
 
-public class TrainingClassDefinition {
+public class ActivityDefinition {
     private String name;
     private String description;
 
-    public TrainingClassDefinition(String name, String description){
+    public ActivityDefinition(String name, String description){
         this.name = name;
         this.description = description;
     }

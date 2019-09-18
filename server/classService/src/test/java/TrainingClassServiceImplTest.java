@@ -1,5 +1,5 @@
 import activity.Seance;
-import activity.TrainingClassDefinition;
+import activity.ActivityDefinition;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 import org.junit.Before;
@@ -19,25 +19,25 @@ public class TrainingClassServiceImplTest{
 
     private int size = 3;
     private ITrainingClassService service;
-    private TrainingClassDefinition class1;
-    private TrainingClassDefinition class2;
+    private ActivityDefinition class1;
+    private ActivityDefinition class2;
 
     @Before
     public void setUp() {
         service = new TrainingClassServiceImpl();
-        class1 = new TrainingClassDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛");
-        class2 = new TrainingClassDefinition("臀腿强化", "加强臀腿肌肉");
+        class1 = new ActivityDefinition("肩颈平衡", "放松肩背肌肉，缓解肩颈疼痛");
+        class2 = new ActivityDefinition("臀腿强化", "加强臀腿肌肉");
     }
 
     @Test
     public void testAddClassDefinition() {
-        TrainingClassDefinition invalideClass =new TrainingClassDefinition("","");
+        ActivityDefinition invalideClass =new ActivityDefinition("","");
         AddClassDefinitionStatus status = service.addClassDefinition(invalideClass);
         assertEquals(status, AddClassDefinitionStatus.failed_invalid_name);
 
         status = service.addClassDefinition(class1);
         assertEquals(status, AddClassDefinitionStatus.success);
-        Optional<TrainingClassDefinition> findClass = service.findClassDeinition("A");
+        Optional<ActivityDefinition> findClass = service.findClassDeinition("A");
         assertEquals(findClass, Optional.empty());
         findClass = service.findClassDeinition("肩颈平衡");
         assertEquals(findClass, Optional.of(class1));
@@ -60,7 +60,7 @@ public class TrainingClassServiceImplTest{
         Seance seance = nextSeanceClass1.get();
         assertEquals(seance.getDate(), nexSaturday);
         assertEquals(seance.size(), 3);
-        assertEquals(seance.getTrainingClassDefinition(), class1);
+        assertEquals(seance.getActivityDefinition(), class1);
 
         assertEquals(nextSeanceClass2.isPresent(), false);
         Map<String, Seance> seances = service.findSeances();
@@ -76,7 +76,7 @@ public class TrainingClassServiceImplTest{
         seance = nextSeanceClass2.get();
         assertEquals(seance.getDate(), nexSaturday);
         assertEquals(seance.size(), 4);
-        assertEquals(seance.getTrainingClassDefinition(), class2);
+        assertEquals(seance.getActivityDefinition(), class2);
 
         seances = service.findSeances();
         assertEquals(seances.size(), 2);

@@ -1,7 +1,7 @@
 package classService;
 
 import activity.Seance;
-import activity.TrainingClassDefinition;
+import activity.ActivityDefinition;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 
@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class TrainingClassServiceImpl implements ITrainingClassService {
-    private Map<String , TrainingClassDefinition> classDefenitions = new HashMap<String, TrainingClassDefinition>();
+    private Map<String , ActivityDefinition> classDefenitions = new HashMap<String, ActivityDefinition>();
     private Map<String, Seance> seances = new HashMap<String, Seance>();
 
     @Override
-    public AddClassDefinitionStatus addClassDefinition(TrainingClassDefinition newClassDef) {
+    public AddClassDefinitionStatus addClassDefinition(ActivityDefinition newClassDef) {
         if(newClassDef.getName().isEmpty()) {
             return AddClassDefinitionStatus.failed_invalid_name;
         }else {
@@ -33,7 +33,7 @@ public class TrainingClassServiceImpl implements ITrainingClassService {
     }
 
     @Override
-    public Optional<TrainingClassDefinition> findClassDeinition(String name) {
+    public Optional<ActivityDefinition> findClassDeinition(String name) {
         if(classDefenitions.containsKey(name))
             return Optional.of(classDefenitions.get(name));
         return Optional.empty();
