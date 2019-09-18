@@ -1,4 +1,4 @@
-package test;
+package classService;
 
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;

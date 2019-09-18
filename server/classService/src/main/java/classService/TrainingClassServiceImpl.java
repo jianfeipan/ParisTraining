@@ -1,10 +1,7 @@
-package test;
+package classService;
 
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
-import test.ITrainingClassService;
-import test.Seance;
-import test.TrainingClassDefinition;
 
 import java.time.LocalDate;
 import java.util.*;

@@ -2,6 +2,10 @@ import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 import org.junit.Before;
 import org.junit.Test;
+import classService.ITrainingClassService;
+import classService.Seance;
+import classService.TrainingClassDefinition;
+import classService.TrainingClassServiceImpl;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -14,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 public class TrainingClassServiceImplTest{
 
     private int size = 3;
-    private TrainingClassServiceImpl service;
+    private ITrainingClassService service;
     private TrainingClassDefinition class1;
     private TrainingClassDefinition class2;
 

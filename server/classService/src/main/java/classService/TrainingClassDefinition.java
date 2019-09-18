@@ -1,4 +1,4 @@
-package test;
+package classService;
 
 public class TrainingClassDefinition {
     private String name;

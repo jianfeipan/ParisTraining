@@ -2,10 +2,10 @@
 import enums.AddUserStatus;
 import org.junit.Before;
 import org.junit.Test;
+import classService.Seance;
+import classService.TrainingClassDefinition;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Locale;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;

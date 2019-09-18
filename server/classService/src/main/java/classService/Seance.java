@@ -1,7 +1,6 @@
-package test;
+package classService;
 
 import enums.AddUserStatus;
-import test.TrainingClassDefinition;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

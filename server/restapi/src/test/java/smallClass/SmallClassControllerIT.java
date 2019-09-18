@@ -34,7 +34,7 @@ public class SmallClassControllerIT {
     @Before
     public void setUp() throws Exception {
         this.getUsersUrl = new URL("http://localhost:" + port + "/smallClass/getUsers");
-        this.postUserUrl = new URL("http://localhost:" + port + "/smallClass/addtUser");
+        this.postUserUrl = new URL("http://localhost:" + port + "/smallClass/addUser");
     }
 
     @Test
@@ -42,32 +42,8 @@ public class SmallClassControllerIT {
         ResponseEntity<String> response = template.getForEntity(getUsersUrl.toString(),
                 String.class);
         assertThat(response.getBody(), equalTo("[]"));
-    }
 
-    @Test
-    public void postUserThenGet() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(getUsersUrl.toString(),
-                String.class);
-        assertThat(response.getBody(), equalTo("[]"));
-
-        HttpEntity<String> request = new HttpEntity<>("Jianfei");
-        response = template.postForEntity(postUserUrl.toString(),
-                request,
-                String.class);
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.CREATED));
-        assertThat(response.getBody(), equalTo("success"));
-
-        response = template.getForEntity(getUsersUrl.toString(),
-                String.class);
-        assertThat(response.getBody(), equalTo("[\"Jianfei\"]"));
-    }
-
-    @Test
-    public void postDuplicatedUserThenGet() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(getUsersUrl.toString(),
-                String.class);
-        assertThat(response.getBody(), equalTo("[]"));
-
+        // postUserThenGet
         HttpEntity<String> request = new HttpEntity<>("Jianfei");
         response = template.postForEntity(postUserUrl.toString(),
                 request,
@@ -79,6 +55,7 @@ public class SmallClassControllerIT {
                 String.class);
         assertThat(response.getBody(), equalTo("[\"Jianfei\"]"));
 
+        //add duplicated user should file
         response = template.postForEntity(postUserUrl.toString(),
                 request,
                 String.class);
