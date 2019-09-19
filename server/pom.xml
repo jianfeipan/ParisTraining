@@ -16,7 +16,7 @@
     </parent>
     <modules>
         <module>restapi</module>
-        <module>classService</module>
+        <module>activityService</module>
         <module>activityModel</module>
         <module>activityPersistenceService</module>
     </modules>
