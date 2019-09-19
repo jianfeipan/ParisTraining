@@ -1,6 +1,8 @@
 package activity;
 
-public class ActivityDefinition {
+import activityApi.IActivityDefinition;
+
+public class ActivityDefinition implements IActivityDefinition {
     private String name;
     private String description;
 

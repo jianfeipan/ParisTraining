@@ -1,30 +1,44 @@
 package activity;
 
+import activityApi.IActivityDefinition;
+import activityApi.ISeance;
 import enums.AddUserStatus;
 
+import javax.swing.text.html.HTMLDocument;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Seance {
+public class Seance implements ISeance {
     private LocalDate date;
     private int size;
     private List<String> users;
-    private ActivityDefinition activityDefinition;
+    private IActivityDefinition activityDefinition;
 
-    public Seance(ActivityDefinition aClass, LocalDate date, int size) {
+    public Seance(IActivityDefinition aClass, LocalDate date, int size) {
         this.activityDefinition = aClass;
         this.date = date;
         this.size = size;
         this.users = new ArrayList<String>(size);
     }
 
-    public LocalDate getDate() {
+    public LocalDate date() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    public IActivityDefinition getActivityDefinition() {
+        return activityDefinition;
     }
 
     public List<String> getUsers() {
@@ -43,11 +57,4 @@ public class Seance {
         }
     }
 
-    public int size(){
-        return size;
-    }
-
-    public ActivityDefinition getActivityDefinition() {
-        return activityDefinition;
-    }
 }

@@ -1,5 +1,7 @@
 import activity.Seance;
 import activity.ActivityDefinition;
+import activityApi.IActivityDefinition;
+import activityApi.ISeance;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 import org.junit.Before;
@@ -37,9 +39,9 @@ public class TrainingClassServiceImplTest{
 
         status = service.addClassDefinition(class1);
         assertEquals(status, AddClassDefinitionStatus.success);
-        Optional<ActivityDefinition> findClass = service.findClassDeinition("A");
+        Optional<IActivityDefinition> findClass = service.findClassDefinition("A");
         assertEquals(findClass, Optional.empty());
-        findClass = service.findClassDeinition("肩颈平衡");
+        findClass = service.findClassDefinition("肩颈平衡");
         assertEquals(findClass, Optional.of(class1));
     }
 
@@ -53,17 +55,17 @@ public class TrainingClassServiceImplTest{
         addSeanceStatus = service.addSeance(class2.getName(), nexSaturday, 3);
         assertEquals(addSeanceStatus, AddSeanceStatus.failed_invalid_class);
 
-        Optional<Seance> nextSeanceClass1 = service.findNextSeance(class1.getName());
-        Optional<Seance> nextSeanceClass2 = service.findNextSeance(class2.getName());
+        Optional<ISeance> nextSeanceClass1 = service.findNextSeance(class1.getName());
+        Optional<ISeance> nextSeanceClass2 = service.findNextSeance(class2.getName());
 
         assertEquals(nextSeanceClass1.isPresent(), true);
-        Seance seance = nextSeanceClass1.get();
-        assertEquals(seance.getDate(), nexSaturday);
+        ISeance seance = nextSeanceClass1.get();
+        assertEquals(seance.date(), nexSaturday);
         assertEquals(seance.size(), 3);
         assertEquals(seance.getActivityDefinition(), class1);
 
         assertEquals(nextSeanceClass2.isPresent(), false);
-        Map<String, Seance> seances = service.findSeances();
+        Map<String, ISeance> seances = service.findSeances();
         assertEquals(seances.size(), 1);
 
 
@@ -74,7 +76,7 @@ public class TrainingClassServiceImplTest{
         nextSeanceClass2 = service.findNextSeance(class2.getName());
         assertEquals(nextSeanceClass2.isPresent(), true);
         seance = nextSeanceClass2.get();
-        assertEquals(seance.getDate(), nexSaturday);
+        assertEquals(seance.date(), nexSaturday);
         assertEquals(seance.size(), 4);
         assertEquals(seance.getActivityDefinition(), class2);
 

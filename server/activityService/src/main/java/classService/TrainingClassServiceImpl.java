@@ -1,7 +1,8 @@
 package classService;
 
 import activity.Seance;
-import activity.ActivityDefinition;
+import activityApi.IActivityDefinition;
+import activityApi.ISeance;
 import enums.AddClassDefinitionStatus;
 import enums.AddSeanceStatus;
 
@@ -9,23 +10,23 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class TrainingClassServiceImpl implements ITrainingClassService {
-    private Map<String , ActivityDefinition> classDefenitions = new HashMap<String, ActivityDefinition>();
-    private Map<String, Seance> seances = new HashMap<String, Seance>();
+    private Map<String, IActivityDefinition> activityDefinitions = new HashMap<String, IActivityDefinition>();
+    private Map<String, ISeance> seances = new HashMap<String, ISeance>();
 
     @Override
-    public AddClassDefinitionStatus addClassDefinition(ActivityDefinition newClassDef) {
+    public AddClassDefinitionStatus addClassDefinition(IActivityDefinition newClassDef) {
         if(newClassDef.getName().isEmpty()) {
             return AddClassDefinitionStatus.failed_invalid_name;
         }else {
-            classDefenitions.put(newClassDef.getName(), newClassDef);
+            activityDefinitions.put(newClassDef.getName(), newClassDef);
             return AddClassDefinitionStatus.success;
         }
     }
 
     @Override
     public AddSeanceStatus addSeance(String className, LocalDate date, int size) {
-        if(classDefenitions.containsKey(className)) {
-            seances.put(className, new Seance(classDefenitions.get(className), date, size));
+        if(activityDefinitions.containsKey(className)) {
+            seances.put(className, new Seance(activityDefinitions.get(className), date, size));
             return AddSeanceStatus.success;
         }else{
             return AddSeanceStatus.failed_invalid_class;
@@ -33,14 +34,14 @@ public class TrainingClassServiceImpl implements ITrainingClassService {
     }
 
     @Override
-    public Optional<ActivityDefinition> findClassDeinition(String name) {
-        if(classDefenitions.containsKey(name))
-            return Optional.of(classDefenitions.get(name));
+    public Optional<IActivityDefinition> findClassDefinition(String name) {
+        if(activityDefinitions.containsKey(name))
+            return Optional.of(activityDefinitions.get(name));
         return Optional.empty();
     }
 
     @Override
-    public Optional<Seance> findNextSeance(String className) {
+    public Optional<ISeance> findNextSeance(String className) {
         if(seances.containsKey(className)) {
             return Optional.of(seances.get(className));
         }else {
@@ -49,7 +50,7 @@ public class TrainingClassServiceImpl implements ITrainingClassService {
     }
 
     @Override
-    public Map<String, Seance> findSeances() {
+    public Map<String, ISeance> findSeances() {
         return seances;
     }
 }
